@@ -1,0 +1,64 @@
+name: Run Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  backend-tests:
+    name: Run Backend Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set Python Path
+        run: |
+          echo "PYTHONPATH=${GITHUB_WORKSPACE}/backend" >> $GITHUB_ENV
+
+      - name: Run Backend Unit Tests
+        run: |
+          cd backend
+          pytest tests/
+        env:
+          GOOGLE_CLIENT_ID: "your-hardcoded-client-id"
+          GOOGLE_CLIENT_SECRET: "your-hardcoded-client-secret"
+
+  frontend-tests:
+    name: Run Frontend Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Step 3: Install dependencies
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm install
+
+      # Step 4: Run frontend tests
+      - name: Run Frontend Tests
+        run: |
+          cd frontend
+          npm test -- --watchAll=false

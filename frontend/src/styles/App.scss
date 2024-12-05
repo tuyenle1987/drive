@@ -1,0 +1,81 @@
+.app {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 1.8rem;
+    color: #333;
+  }
+
+  .btn-logout {
+    background: #ff4d4d;
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+.error-message {
+  background: #ffe6e6;
+  border: 1px solid #ff4d4d;
+  color: #b30000;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background: none;
+    border: none;
+    color: #b30000;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.no-files-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+button {
+  margin-top: 10px;
+  background: #4caf50;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: #45a049;
+  }
+
+  &:disabled {
+    background: #ddd;
+    color: #999;
+    cursor: not-allowed;
+  }
+}
+
+.app-loading,
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+}
